@@ -6,8 +6,7 @@
   "scripts": {
     "lint": "standard --fix && echo \"Code has been linted\"",
     "test": "jest",
-    "dev": " nodemon -r esm index.js",
-    "start": "nodemon -r esm index.js"
+    "dev": " nodemon -r esm index.js"
   },
   "author": "Luis Middleton",
   "license": "ISC",
