@@ -28,11 +28,6 @@ const UserSchema = new Schema(
       required: [true, 'A password is required'],
       type: String,
       select: false,
-      validate: v => {
-        return new Promise((resolve, reject) => {
-          passwordIsValid(v) ? resolve(v) : reject(new Error('Failed Validation'))
-        })
-      }
     },
     deactivated: { type: Boolean, default: false }
   },

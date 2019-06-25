@@ -1,4 +1,5 @@
 import express from 'express'
+import helmet from 'helmet'
 import bodyParser from 'body-parser'
 import logger from 'morgan'
 import mongoose from 'mongoose'
@@ -15,6 +16,18 @@ import {
 // intialize express instance
 const app = express()
 
+// enable helmet
+app.use(helmet());
+
+// parse application/json
+app.use(bodyParser.json())
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// logger
+app.use(logger('dev'))
+
 // URL to MongoDB
 const MONGO_URL = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_DOMAIN}/${MONGO_APP}?retryWrites=true&w=majority`
 
@@ -29,16 +42,6 @@ mongoose.connection.on(
 
 // set mongoose options
 mongoose.set('debug', !PRODUCTION)
-
-// logger
-app.use(logger('dev'))
-
-// body parser, set extended to false
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-)
 
 // map routes to instance
 app.use('/api', routes)

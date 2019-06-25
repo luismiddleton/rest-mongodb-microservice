@@ -12,10 +12,11 @@ export const {
   MONGO_PASSWORD,
   MONGO_DOMAIN,
   MONGO_APP,
+  JWT_SECRET,
   PORT = 4000
 } = process.env
 
-// salt rounds for hash
+// salt rounds for hashing password(s)
 export const SALT_ROUNDS = 11
 
 // cookie settings
